@@ -1,0 +1,58 @@
+CREATE DATABASE IF NOT EXISTS RetroMinigames;
+USE RetroMinigames;
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_type ENUM('regular', 'admin') DEFAULT 'regular',
+    updated_at TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE game (
+	game_id INT AUTO_INCREMENT PRIMARY KEY,
+    name_game VARCHAR(100) NOT NULL,
+    descriptions text,
+	genre VARCHAR(50)
+);
+
+CREATE TABLE user_game (
+    user_game_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    game_id INT,
+    score INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (game_id) REFERENCES game(game_id) ON DELETE CASCADE
+);
+
+CREATE TABLE comments (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT, 
+    game_id INT,
+    comment_text TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (game_id) REFERENCES game(game_id) ON DELETE CASCADE
+);
+
+CREATE TABLE likes_dislikes (
+    reaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    game_id INT,
+    reaction_type ENUM('like', 'dislike'),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (game_id) REFERENCES game(game_id) ON DELETE CASCADE,
+    UNIQUE(user_id, game_id)
+);
+
+CREATE TABLE achievements (
+    achievement_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    game_id INT,
+    achievement_name VARCHAR(100),
+    achievement_description TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (game_id) REFERENCES game(game_id) ON DELETE CASCADE
+);

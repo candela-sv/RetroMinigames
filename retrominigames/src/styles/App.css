@@ -1,0 +1,62 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #ff00bb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 10px 0;
+}
+
+.title {
+  width: 100%;
+  max-width: 450px;
+  height: auto; 
+  display: block;
+  margin: 15px auto;
+}
+
+button[type="signup"] {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  padding: 10px 15px;
+  font-size: 18px;
+  background-color: #af0063;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 10px;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="signup"]:hover {
+  background-color: #6c003d;
+}
+
+button[type="login"] {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  padding: 10px 15px;
+  font-size: 18px;
+  background-color: #FBB1BD;
+  color: #6E6E6E;
+  border-radius: 5px;
+  padding: 8px 10px;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="login"]:hover {
+  background-color: #ffdbe1;
+}
