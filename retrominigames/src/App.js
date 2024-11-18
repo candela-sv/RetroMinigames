@@ -5,6 +5,7 @@ import axios from 'axios';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './pages/login';
 import SignUp from './pages/signup';
+import SpaceInvaders from './games/SpaceInvaders';
 
 function Home() {
   const [message, setMessage] = useState('');
@@ -37,7 +38,18 @@ function Home() {
           Log In
         </button>
       </header>
-      <h1>{message}</h1>
+
+      <main className="App-main">
+        <h1>{message}</h1>
+
+        <button 
+          type="button" 
+          onClick={() => navigate('/spaceinvaders')}
+          className="spaceinvaders-button" // Puedes agregarle una clase para darle estilo
+        >
+          Space Invaders
+        </button>
+      </main>
     </div>
   );
 }
@@ -48,7 +60,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} /> 
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/spaceinvaders" element={<SpaceInvaders />} /> {/* Ruta para el juego */}
       </Routes>
     </BrowserRouter>
   );

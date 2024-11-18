@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import '../styles/signup.css';
 
 function SignUp() {
@@ -11,7 +10,7 @@ function SignUp() {
     confirmPassword: ''
   });
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [success, setSuccess] = useState(''); // Estado para el mensaje de éxito
 
   const handleChange = (e) => {
     setFormData({
@@ -23,6 +22,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setSuccess(''); // Limpiar cualquier mensaje previo
 
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
@@ -31,7 +31,11 @@ function SignUp() {
 
     try {
       await axios.post('http://localhost:5000/signup', formData);
-      navigate('/login');
+      setSuccess('User registered successfully!');
+      
+      setTimeout(() => {
+        setSuccess(''); 
+      }, 3000);
     } catch (error) {
       setError(error.response?.data?.message || 'An error occurred during sign up');
     }
@@ -40,8 +44,9 @@ function SignUp() {
   return (
     <div className="signup-container">
       <div className="signup-box">
-        {error && <div className="error-message">{error}</div>} {/* Mover el mensaje de error aquí */}
-        
+        {error && <div className="error-message">{error}</div>}
+        {success && <div className="success-message">{success}</div>}
+
         <div className="signup-form">
           <div className="form-group">
             <input
