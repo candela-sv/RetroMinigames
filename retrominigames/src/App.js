@@ -45,7 +45,7 @@ function Home() {
         <button 
           type="button" 
           onClick={() => navigate('/spaceinvaders')}
-          className="spaceinvaders-button" // Puedes agregarle una clase para darle estilo
+          className="spaceinvaders-button" 
         >
           Space Invaders
         </button>
@@ -61,7 +61,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/spaceinvaders" element={<SpaceInvaders />} /> {/* Ruta para el juego */}
+        <Route path="/spaceinvaders" element={<SpaceInvaders />} />
       </Routes>
     </BrowserRouter>
   );

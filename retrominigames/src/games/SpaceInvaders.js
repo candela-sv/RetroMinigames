@@ -3,18 +3,18 @@ import '../styles/SpaceInvaders.css';
 
 function SpaceInvaders() {
   const [gameStarted, setGameStarted] = useState(false);
-  const canvasRef = useRef(null); // Crear una referencia al canvas
-  const rightPressed = useRef(false); // Usamos useRef para manejar el estado de las teclas
+  const canvasRef = useRef(null);
+  const rightPressed = useRef(false);
   const leftPressed = useRef(false);
-  const upPressed = useRef(false); // Cambiar spacePressed por upPressed para la flecha hacia arriba
+  const upPressed = useRef(false);
 
-  // Función para iniciar el juego
+ 
   const startGame = () => {
     setGameStarted(true);
   };
 
   useEffect(() => {
-    if (!gameStarted) return; // Si el juego no ha comenzado, no hacer nada
+    if (!gameStarted) return; 
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');

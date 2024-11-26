@@ -10,7 +10,7 @@ function SignUp() {
     confirmPassword: ''
   });
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState(''); // Estado para el mensaje de éxito
+  const [success, setSuccess] = useState('');
 
   const handleChange = (e) => {
     setFormData({
