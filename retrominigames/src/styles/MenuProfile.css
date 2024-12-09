@@ -1,0 +1,43 @@
+.menu-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px 2.5px #ff00bb;
+  padding: 16px;
+  width: 175px;
+}
+
+.menu-title {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #989898;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.menu-item:hover {
+  background-color: #FFB3FA;
+  border-radius: 5px;
+}
+
+.menu-item svg {
+  color: #5C5C5C;
+  margin-right: 8px;
+}
+
+.logout-item {
+  color: #ff0000;
+  border-top: 1px solid #989898;
+}
+
+.logout-item:hover {
+  background-color: #d3d3d3;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../context/UserContext'; // Importar el contexto de usuario
+import { useUser } from '../context/UserContext';
 import '../styles/login.css';
 import avatar from '../images/avatar.png';
 
@@ -12,7 +12,7 @@ function Login() {
   });
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { setUser } = useUser(); // Acceso al contexto del usuario
+  const { setUser } = useUser();
 
   const handleChange = (e) => {
     setCredentials({

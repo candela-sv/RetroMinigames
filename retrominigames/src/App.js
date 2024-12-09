@@ -10,7 +10,7 @@ import { UserProvider } from './context/UserContext';
 
 function Home() {
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // Agregar esta línea para definir navigate
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     axios.get('http://localhost:5000/')
