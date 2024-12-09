@@ -3,6 +3,7 @@ import { useUser } from '../context/UserContext';
 import '../styles/Profile.css';
 import myAvatar from '../images/pfp.png';
 import Header from '../components/Header.js';
+import Footer from '../components/Footer.js';
 
 function Profile() {
   const { user } = useUser();
@@ -84,6 +85,7 @@ function Profile() {
           <p className="points-value">{points}</p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

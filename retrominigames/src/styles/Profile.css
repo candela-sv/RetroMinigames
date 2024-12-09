@@ -10,6 +10,7 @@
 
 /* Cabecera del perfil (foto y nombre) */
 .profile-header {
+  margin-top: 70px;
   display: flex;
   align-items: center;
   margin-bottom: 20px;

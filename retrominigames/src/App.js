@@ -8,6 +8,7 @@ import SpaceInvaders from './games/SpaceInvaders';
 import Header from './components/Header';
 import Profile from './pages/Profile'; 
 import { UserProvider } from './context/UserContext';
+import Footer from './components/Footer';
 
 function Home() {
   const [message, setMessage] = useState('');
@@ -36,6 +37,7 @@ function Home() {
           Space Invaders
         </button>
       </main>
+      <Footer />
     </div>
   );
 }
