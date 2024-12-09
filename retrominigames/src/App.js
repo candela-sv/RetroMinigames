@@ -1,4 +1,3 @@
-import titleimage from './title.png';
 import './styles/App.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -6,6 +5,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './pages/login';
 import SignUp from './pages/signup';
 import SpaceInvaders from './games/SpaceInvaders';
+import Header from './components/Header';
 
 function Home() {
   const [message, setMessage] = useState('');
@@ -23,25 +23,9 @@ function Home() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={titleimage} alt="Title" className="title" />
-        <button 
-          type="signup" 
-          onClick={() => navigate('/signup')}
-        >
-          Sign Up
-        </button>
-        <button 
-          type="login" 
-          onClick={() => navigate('/login')}
-        >
-          Log In
-        </button>
-      </header>
-
+      <Header />
       <main className="App-main">
         <h1>{message}</h1>
-
         <button 
           type="button" 
           onClick={() => navigate('/spaceinvaders')}
