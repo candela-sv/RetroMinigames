@@ -6,10 +6,11 @@ import Login from './pages/login';
 import SignUp from './pages/signup';
 import SpaceInvaders from './games/SpaceInvaders';
 import Header from './components/Header';
+import { UserProvider } from './context/UserContext';
 
 function Home() {
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Agregar esta línea para definir navigate
 
   useEffect(() => {
     axios.get('http://localhost:5000/')
@@ -40,14 +41,16 @@ function Home() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/spaceinvaders" element={<SpaceInvaders />} />
-      </Routes>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/spaceinvaders" element={<SpaceInvaders />} />
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 
