@@ -6,6 +6,7 @@ import Login from './pages/login';
 import SignUp from './pages/signup';
 import SpaceInvaders from './games/SpaceInvaders';
 import Header from './components/Header';
+import Profile from './pages/Profile'; 
 import { UserProvider } from './context/UserContext';
 
 function Home() {
@@ -48,6 +49,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/spaceinvaders" element={<SpaceInvaders />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>
