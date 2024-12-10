@@ -21,7 +21,7 @@ function Header() {
               src={user.avatar || myAvatar}
               alt="User Avatar"
               className="user-avatar-small"
-              onClick={() => setMenuOpen(!menuOpen)} // Alterna la visibilidad del menú
+              onClick={() => setMenuOpen(!menuOpen)}
             />
             {menuOpen && (
               <div style={{ position: 'absolute', top: '100%', right: 0 }}>

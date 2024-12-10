@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useUser } from '../context/UserContext';
 import '../styles/Profile.css';
 import myAvatar from '../images/pfp.png';
@@ -7,82 +7,95 @@ import Footer from '../components/Footer.js';
 
 function Profile() {
   const { user } = useUser();
-  const [likedGames, setLikedGames] = useState(user?.likedGames || []);
-  const [points, setPoints] = useState(0);
-  const [achievements, setAchievements] = useState([
-    { id: 1, name: '50 Shades of Pink', image: 'https://via.placeholder.com/50x50' },
-    { id: 2, name: 'Alien Exterminator', image: 'https://via.placeholder.com/50x50' },
-  ]);
 
-  const games = [
-    { id: 1, name: 'Space Invaders', image: 'https://via.placeholder.com/50x50' },
-    { id: 2, name: 'Tetris', image: 'https://via.placeholder.com/50x50' },
+  const achievements = [
+    {
+      id: 1,
+      name: '50 Shades of Pink',
+      description: 'Place 50 pink pieces in a single game of Tetris.',
+      image: 'https://via.placeholder.com/50x50/fc0/fc0.png?text=P',
+    },
+    {
+      id: 2,
+      name: 'Alien Exterminator',
+      description: 'Destroy 100 alien invaders in a single game.',
+      image: 'https://via.placeholder.com/50x50/0f0/0f0.png?text=A',
+    },
   ];
 
-  const handleLikeGame = (gameId) => {
-    setLikedGames((prevLikes) => {
-      if (prevLikes.includes(gameId)) {
-        return prevLikes.filter(id => id !== gameId);
-      } else {
-        return [...prevLikes, gameId];
-      }
-    });
-  };
+  const likedGames = [
+    {
+      id: 1,
+      name: 'Space Invaders',
+      rating: '9.4★',
+      image: 'https://via.placeholder.com/100x100?text=SI',
+    },
+    {
+      id: 2,
+      name: 'Tetris',
+      rating: '8.2★',
+      image: 'https://via.placeholder.com/100x100?text=T',
+    },
+  ];
+
+  const points = 0;
 
   return (
     <div>
       <Header />
       <div className="profile-container">
+        {/* Header */}
         <div className="profile-header">
           <img
             src={user?.avatar || myAvatar}
             alt="User Avatar"
             className="profile-avatar"
           />
-          <h2 className="username">{user?.username || 'Candela Ackerman'}</h2>
+          <span className="profile-username">{user?.username || 'Candela Ackerman'}</span>
         </div>
 
-        <div className="achievements">
-          <h3>ACHIEVEMENTS</h3>
-          <div className="achievements-list">
+        {/* Achievements Section */}
+        <div className="profile-section">
+          <h2 className="profile-section-title">ACHIEVEMENTS · {achievements.length}</h2>
+          <div className="profile-achievements">
             {achievements.map((achievement) => (
-              <div key={achievement.id} className="achievement-item">
+              <div key={achievement.id} className="achievement">
                 <img
                   src={achievement.image}
                   alt={achievement.name}
-                  className="achievement-image"
+                  className="achievement-icon"
                 />
-                <p className="achievement-name">{achievement.name}</p>
+                <div className="achievement-details">
+                  <h3 className="achievement-title">{achievement.name}</h3>
+                  <p className="achievement-description">{achievement.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="liked-games">
-          <h3>LIKED GAMES</h3>
-          <div className="games-list">
-            {games.map((game) => (
-              <div key={game.id} className="game-item">
-                <img
-                  src={game.image}
-                  alt={game.name}
-                  className="game-image"
-                />
-                <p className="game-name">{game.name}</p>
-                <button
-                  onClick={() => handleLikeGame(game.id)}
-                  className={likedGames.includes(game.id) ? 'liked' : 'like-button'}
-                >
-                  {likedGames.includes(game.id) ? 'Liked' : 'Like'}
-                </button>
+        {/* Liked Games Section */}
+        <div className="profile-section">
+          <h2 className="profile-section-title">LIKED GAMES · {likedGames.length}</h2>
+          <div className="profile-games">
+            {likedGames.map((game) => (
+              <div key={game.id} className="game">
+                <img src={game.image} alt={game.name} className="game-image" />
+                <div className="game-details">
+                  <h3 className="game-title">{game.name}</h3>
+                  <span className="game-rating">{game.rating}</span>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="points">
-          <h3>POINTS</h3>
-          <p className="points-value">{points}</p>
+        {/* Points Section */}
+        <div className="profile-section">
+          <h2 className="profile-section-title">POINTS · {points}</h2>
+          <div className="profile-points">
+            <span className="points-value">{points}</span>
+          </div>
         </div>
       </div>
       <Footer />
