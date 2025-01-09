@@ -91,7 +91,7 @@
 
 .game-container {
   display: flex;
-  justify-content: flex-start; /* Alinea los elementos a la izquierda */
+  justify-content: center; /* Alinea los elementos a la izquierda */
   align-items: center;
   margin-top: 20px;
   padding-left: 20px; /* Espaciado desde el borde izquierdo */
@@ -104,7 +104,9 @@
 }
 
 .spaceinvaders-button,
-.tetris-button {
+.tetris-button,
+.tik-tak-toe-button,
+.fix-it-felix-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -114,15 +116,20 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efectos de transición */
 }
 
-.spaceinvaders-button:hover,
-.tetris-button:hover {
+.game-container button.spaceinvaders-button:hover,
+.game-container button.tetris-button:hover,
+.game-container button.tik-tak-toe-button:hover,
+.game-container button.fix-it-felix-button:hover {
   transform: scale(1.05); /* Efecto de zoom al pasar el cursor */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al pasar el cursor */
 }
 
+
 .spaceinvaders-button img,
-.tetris-button img {
-  border-radius: 15px; /* Asegura que la imagen también tenga bordes redondeados */
+.tetris-button img,
+.tik-tak-toe-button img,
+.fix-it-felix-button img {
+  border-radius: 15px; 
   display: block;
   width: 150px;
   height: auto;
@@ -132,4 +139,3 @@
   margin-top: 10px;
   font-size: 14px;
 }
-

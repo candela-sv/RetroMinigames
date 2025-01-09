@@ -74,7 +74,7 @@ function Home() {
             <button 
               type="button" 
               onClick={() => navigate('/tiktaktoe')}
-              className="tiktaktoebutton" 
+              className="tik-tak-toe-button" 
               style={{ backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}
             >
               <img 
@@ -92,7 +92,7 @@ function Home() {
             <button 
               type="button" 
               onClick={() => navigate('/fixitfelix')}
-              className=".fixitfelix-button" 
+              className="fix-it-felix-button" 
               style={{ backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}
             >
               <img 
