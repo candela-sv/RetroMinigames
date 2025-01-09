@@ -20,7 +20,7 @@ function MenuProfile() {
       </div>
 
       <div
-        onClick={() => navigate('/achievements')}
+        onClick={() => navigate('/profile')}
         className="menu-item"
       >
         <Award size={20} style={{ marginRight: '10px' }} />

@@ -4,7 +4,7 @@ import '../styles/Footer.css';
 function Footer() {
   return (
     <footer className="footer">
-      <p>&copy; 2024 Your Company Name. All Rights Reserved.</p>
+      <p>&copy; 2025 Candela Simón. All Rights Reserved.</p>
     </footer>
   );
 }

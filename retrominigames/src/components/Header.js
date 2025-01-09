@@ -31,20 +31,21 @@ function Header() {
           </div>
         </div>
       ) : (
-        <div className="auth-buttons">
-          <button
-            onClick={() => navigate('/signup')}
-            className="signup-button"
-          >
-            Sign Up
-          </button>
-          <button
-            onClick={() => navigate('/login')}
-            className="login-button"
-          >
-            Log In
-          </button>
-        </div>
+<div className="auth-buttons">
+  <button
+    onClick={() => navigate('/signup')}
+    className="signup-button"
+  >
+    Sign Up
+  </button>
+  <button
+    onClick={() => navigate('/login')}
+    className="login-button"
+  >
+    Log In
+  </button>
+</div>
+
       )}
     </header>
   );
