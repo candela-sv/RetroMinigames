@@ -175,8 +175,19 @@
 }
 
 .info-card h3 {
-  color: #252525;
   margin-top: 0;
+}
+
+.info-card:first-child h3 {
+  color: #45fe02; /* Blue title */
+}
+
+.info-card:nth-child(2) h3 {
+  color: #35A3F4; /* Teal title */
+}
+
+.info-card:last-child h3 {
+  color: #FF00EE; /* Dark pink title */
 }
 
 .info-card p {

@@ -1,37 +1,87 @@
 .space-invaders-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: black;
-    color: white;
-    flex-direction: column;
-  }
-  
-  .game-intro {
-    text-align: center;
-  }
-  
-  .play-button {
-    background-color: #ff00bb;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s;
-  }
-  
-  .play-button:hover {
-    background-color: #9e0059;
-  }
-  
-  .game-canvas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 800px;
-    height: 600px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.game-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.game-intro h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.play-button {
+  background-color: #00ff00;
+  color: #000;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.game-canvas {
+  border: 1px solid #fff;
+  margin-bottom: 2rem;
+}
+
+.game-description {
+  max-width: 800px;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.comments-section {
+  width: 100%;
+  max-width: 800px;
+}
+
+.comments {
+  border: 1px solid #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.username {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.new-comment {
+  display: flex;
+  align-items: center;
+}
+
+.new-comment textarea {
+  flex-grow: 1;
+  background-color: #2a2a2a;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.post-button {
+  background-color: #00ff00;
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
