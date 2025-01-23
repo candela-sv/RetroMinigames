@@ -13,6 +13,7 @@ import spaceInvadersImage from './images/space-invaders.png';
 import tetrisImage from './images/tetris.png';
 import tikTakToeImage from './images/tik-tak-toe.png';
 import fixItFelixImage from './images/fix-it-felix.png';
+import Tetris from './games/Tetris';
 
 function Home() {
   const [message, setMessage] = useState('');
@@ -143,7 +144,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/spaceinvaders" element={<SpaceInvaders />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/tetris" element={<div>Tetris Game Placeholder</div>} />
+          <Route path="/tetris" element={<Tetris />} />
           <Route path="/tiktaktoe" element={<div>Tik Tak Toe Game Placeholder</div>} />
           <Route path="/fixitfelix" element={<div>Fix It Felix Jr. Game Placeholder</div>} />
         </Routes>

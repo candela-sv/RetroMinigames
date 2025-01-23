@@ -18,6 +18,23 @@ const pool = mysql.createPool({
 app.use(cors());
 app.use(express.json());
 
+// Middleware para verificar el token JWT
+const authenticateToken = (req, res, next) => {
+  const token = req.headers['authorization'];
+
+  if (!token) {
+    return res.status(401).json({ message: 'Token is missing' });
+  }
+
+  jwt.verify(token, 'your_secret_key', (err, user) => {
+    if (err) {
+      return res.status(403).json({ message: 'Invalid or expired token' });
+    }
+    req.user = user; // Agregar usuario al request para acceder en la ruta
+    next();
+  });
+};
+
 // Sign up endpoint
 app.post('/signup', async (req, res) => {
   try {
@@ -58,7 +75,6 @@ app.post('/signup', async (req, res) => {
 // Login endpoint
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
-  console.log('Login attempt:', { email }); // Log intento de login
 
   if (!email || !password) {
     return res.status(400).json({ message: 'Email and password are required' });
@@ -67,23 +83,17 @@ app.post('/login', async (req, res) => {
   try {
     // Buscar al usuario en la base de datos
     const [rows] = await pool.execute('SELECT * FROM users WHERE email = ?', [email]);
-    console.log('Database query result:', rows); // Log resultado de la query
 
     if (rows.length === 0) {
-      console.log('No user found for this email: ', email); 
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
     const user = rows[0];
 
-    // Depuración: Mostrar el hash de la contraseña almacenada
-    console.log('Stored hash password: ', user.password);
-
     // Comparar la contraseña proporcionada con la almacenada (hash)
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) {
-      console.log('Password mismatch for email: ', email); 
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
@@ -99,10 +109,31 @@ app.post('/login', async (req, res) => {
       },
       token,
     });
-
   } catch (error) {
     console.error('Error details:', error.message);
     res.status(500).json({ message: 'Error logging in' });
+  }
+});
+
+// Comentarios endpoint (requiere autenticación)
+app.post('/comment', authenticateToken, async (req, res) => {
+  const { game_id, comment_text } = req.body;
+
+  if (!game_id || !comment_text) {
+    return res.status(400).json({ message: 'Game ID and comment text are required' });
+  }
+
+  try {
+    // Insertar el comentario en la base de datos
+    const [result] = await pool.execute(
+      'INSERT INTO comments (user_id, game_id, comment_text, created_at) VALUES (?, ?, ?, NOW())',
+      [req.user.userId, game_id, comment_text]
+    );
+
+    res.status(201).json({ message: 'Comment added successfully', commentId: result.insertId });
+  } catch (error) {
+    console.error('Error inserting comment:', error.message);
+    res.status(500).json({ message: 'Error adding comment' });
   }
 });
 
@@ -116,6 +147,7 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
+// Helper function to validate email
 function validateEmail(email) {
   // Simple email validation regex
   return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
