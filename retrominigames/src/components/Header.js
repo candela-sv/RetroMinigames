@@ -14,6 +14,13 @@ function Header() {
   return (
     <header className="App-header">
       <img src={titleimage} alt="Title" className="title" />
+      <button
+        onClick={() => navigate('/')} // Botón para ir a la homepage
+        className="menu-button"
+        style={{ marginLeft: '10px', padding: '5px 10px', cursor: 'pointer' }}
+      >
+        Home
+      </button>
       {user ? (
         <div className="user-menu">
           <div className="avatar-container" style={{ position: 'relative' }}>
@@ -31,21 +38,20 @@ function Header() {
           </div>
         </div>
       ) : (
-<div className="auth-buttons">
-  <button
-    onClick={() => navigate('/signup')}
-    className="signup-button"
-  >
-    Sign Up
-  </button>
-  <button
-    onClick={() => navigate('/login')}
-    className="login-button"
-  >
-    Log In
-  </button>
-</div>
-
+        <div className="auth-buttons">
+          <button
+            onClick={() => navigate('/signup')}
+            className="signup-button"
+          >
+            Sign Up
+          </button>
+          <button
+            onClick={() => navigate('/login')}
+            className="login-button"
+          >
+            Log In
+          </button>
+        </div>
       )}
     </header>
   );
