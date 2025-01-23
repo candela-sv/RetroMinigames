@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Header from '../components/Header'; // Importamos el Header
 import Footer from '../components/Footer'; // Importamos el Footer
-import '../styles/SpaceInvaders.css';
+import '../styles/Tetris.css';
 
 const Tetris = () => {
   const [gameStarted, setGameStarted] = useState(false);
@@ -25,15 +25,15 @@ const Tetris = () => {
       // Definimos el tablero de juego
       let board = Array.from({ length: rows }, () => Array(cols).fill(null));
 
-      // Las piezas de Tetris
+      // Las piezas de Tetris y sus colores
       const pieces = [
-        [[1, 1, 1], [null, 1, null]], // T
-        [[1, 1, 1, 1]], // I
-        [[1, 1], [1, 1]], // O
-        [[1, 1, null], [null, 1, 1]], // S
-        [[null, 1, 1], [1, 1, null]], // Z
-        [[1, null, null], [1, 1, 1]], // L
-        [[null, null, 1], [1, 1, 1]], // J
+        { shape: [[1, 1, 1], [null, 1, null]], color: '#FF5733' }, // T
+        { shape: [[1, 1, 1, 1]], color: '#33C1FF' }, // I
+        { shape: [[1, 1], [1, 1]], color: '#FFDD33' }, // O
+        { shape: [[1, 1, null], [null, 1, 1]], color: '#75FF33' }, // S
+        { shape: [[null, 1, 1], [1, 1, null]], color: '#FF33A2' }, // Z
+        { shape: [[1, null, null], [1, 1, 1]], color: '#33C1FF' }, // L
+        { shape: [[null, null, 1], [1, 1, 1]], color: '#FF9F33' }, // J
       ];
 
       // Estado de la pieza actual
@@ -56,10 +56,10 @@ const Tetris = () => {
 
         // Dibuja la pieza actual
         if (currentPiece) {
-          currentPiece.forEach((row, yOffset) => {
+          currentPiece.shape.forEach((row, yOffset) => {
             row.forEach((block, xOffset) => {
               if (block) {
-                ctx.fillStyle = '#00FF00';
+                ctx.fillStyle = currentPiece.color;
                 ctx.fillRect(
                   (currentPosition.x + xOffset) * blockSize,
                   (currentPosition.y + yOffset) * blockSize,
@@ -86,9 +86,9 @@ const Tetris = () => {
 
       // Función para verificar si hay colisiones
       const checkCollision = () => {
-        for (let y = 0; y < currentPiece.length; y++) {
-          for (let x = 0; x < currentPiece[y].length; x++) {
-            if (currentPiece[y][x]) {
+        for (let y = 0; y < currentPiece.shape.length; y++) {
+          for (let x = 0; x < currentPiece.shape[y].length; x++) {
+            if (currentPiece.shape[y][x]) {
               const newX = currentPosition.x + x;
               const newY = currentPosition.y + y;
               if (newX < 0 || newX >= cols || newY >= rows || board[newY] && board[newY][newX]) {
@@ -102,10 +102,10 @@ const Tetris = () => {
 
       // Función para colocar una pieza en el tablero
       const placePiece = () => {
-        for (let y = 0; y < currentPiece.length; y++) {
-          for (let x = 0; x < currentPiece[y].length; x++) {
-            if (currentPiece[y][x]) {
-              board[currentPosition.y + y][currentPosition.x + x] = '#00FF00'; // Coloca la pieza en el tablero
+        for (let y = 0; y < currentPiece.shape.length; y++) {
+          for (let x = 0; x < currentPiece.shape[y].length; x++) {
+            if (currentPiece.shape[y][x]) {
+              board[currentPosition.y + y][currentPosition.x + x] = currentPiece.color; // Coloca la pieza en el tablero
             }
           }
         }
@@ -146,9 +146,9 @@ const Tetris = () => {
 
       // Función para rotar la pieza
       const rotatePiece = () => {
-        const rotatedPiece = currentPiece[0].map((_, index) => currentPiece.map(row => row[index])).reverse();
+        const rotatedPiece = currentPiece.shape[0].map((_, index) => currentPiece.shape.map(row => row[index])).reverse();
         const originalPiece = currentPiece;
-        currentPiece = rotatedPiece;
+        currentPiece = { shape: rotatedPiece, color: currentPiece.color };
         if (checkCollision()) {
           currentPiece = originalPiece; // Deshacer la rotación si hay colisión
         }
@@ -206,7 +206,7 @@ const Tetris = () => {
       <div className="game-description card">
         <h2 className="game-description-title">GAME DESCRIPTION</h2>
         <p>
-          Enjoy the iconic puzzle game Tetris! Place the falling blocks in the best positions to create full lines, which will then disappear. The game gets faster as you clear more lines. Keep playing and aim for the highest score possible!
+        Do you love fast-paced puzzle games? Play Tetris at Retro Minigames! Stack and rotate falling blocks to clear lines and keep the board from filling up. Test your reflexes and strategy in this timeless classic that has entertained millions of players worldwide. Enjoy the thrill of high scores and see how long you can last in one of the most iconic games ever, available to play now at Retro Minigames!
         </p>
         <p className="game-category">Category: Puzzle, Arcade</p>
       </div>
