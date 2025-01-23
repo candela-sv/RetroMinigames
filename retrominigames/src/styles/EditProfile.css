@@ -2,14 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 0;
+    position: absolute; /* Cambiado de fixed a absolute */
+    top: 60px; /* Ajusta este valor según la altura del header */
     left: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    height: calc(100% - 120px); /* Resta la altura del header y el footer */
     z-index: 1000;
   }
+  
   
   .window-content {
     background-color: #fff;
@@ -29,7 +29,7 @@
   
   .window-header h2 {
     font-size: 1.5rem;
-    color: #333;
+    color: #717171;
   }
   
   .close-window {
@@ -46,7 +46,7 @@
   
   hr {
     border: none;
-    border-top: 2px solid #007bff;
+    border-top: 2px solid #000000;
     margin: 10px 0;
   }
   
@@ -81,7 +81,7 @@
     width: 100px;
     height: 100px;
     border-radius: 10px;
-    border: 2px solid #007bff;
+    border: 2px solid #000000;
     object-fit: cover;
   }
   
@@ -104,7 +104,7 @@
   
   button.save-changes {
     display: block;
-    background-color: #900;
+    background-color: #b00066;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -116,6 +116,6 @@
   }
   
   button.save-changes:hover {
-    background-color: #b00000;
+    background-color: #ff00ff;
   }
   
