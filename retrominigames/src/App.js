@@ -6,7 +6,8 @@ import Login from './pages/login';
 import SignUp from './pages/signup';
 import SpaceInvaders from './games/SpaceInvaders';
 import Header from './components/Header';
-import Profile from './pages/Profile'; 
+import Profile from './pages/Profile';
+import EditProfile from './pages/edit-profile';
 import { UserProvider } from './context/UserContext';
 import Footer from './components/Footer';
 import spaceInvadersImage from './images/space-invaders.png';
@@ -144,6 +145,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/spaceinvaders" element={<SpaceInvaders />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/tetris" element={<Tetris />} />
           <Route path="/tiktaktoe" element={<div>Tik Tak Toe Game Placeholder</div>} />
           <Route path="/fixitfelix" element={<div>Fix It Felix Jr. Game Placeholder</div>} />
