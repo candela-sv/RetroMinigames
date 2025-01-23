@@ -125,8 +125,6 @@ function Home() {
             <h3>Contact Us</h3>
             <p>We'd Love to Hear from You!</p>
             <p>At Retro Minigames, your feedback and questions are important to us. Whether you have suggestions for new games, need assistance with your gaming experience, or want to share your gaming experience, we're here to help!</p>
-            <p>Contact Us Anytime</p>
-            <p>Feel free to reach out via email at support@retrominigames.com.</p>
           </div>
         </div>
       </main>
